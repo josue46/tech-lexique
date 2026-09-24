@@ -1,0 +1,53 @@
+/* TechLexique — styles complémentaires */
+:root { color-scheme: light; }
+.dark { color-scheme: dark; }
+
+/* Scrollbar fine */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: #d5dae3; border-radius: 8px; border: 2px solid transparent; background-clip: padding-box;
+}
+.dark ::-webkit-scrollbar-thumb { background: #3a4553; border: 2px solid transparent; background-clip: padding-box; }
+
+/* Apparition des cartes */
+.card-enter { animation: cardIn .35s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(10px) scale(.985); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Carte */
+.term-card {
+  transition: transform .18s cubic-bezier(.2,.8,.2,1), border-color .18s ease, box-shadow .18s ease;
+}
+.term-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px -12px rgba(77,111,255,.18);
+}
+
+/* Détails ouverts (style propre sans <details> natif) */
+.term-details {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .28s cubic-bezier(.2,.8,.2,1);
+}
+.term-details > div { overflow: hidden; }
+.term-card.open .term-details { grid-template-rows: 1fr; }
+.term-card.open .chevron { transform: rotate(180deg); }
+.chevron { transition: transform .25s ease; }
+
+/* Marqueur de recherche */
+mark {
+  background: rgba(77,111,255,.22);
+  color: inherit;
+  border-radius: 3px;
+  padding: 0 1px;
+}
+
+/* Pastille de catégorie : pastille colorée par domaine */
+.cat-dot { box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 15%, transparent); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
